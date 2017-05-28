@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "AdjacencyMatrix.h"
 #include "Edge.h"
 #include <climits>
