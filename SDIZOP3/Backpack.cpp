@@ -6,6 +6,7 @@ int Backpack::add(Item* it)
 {
 	if (total_w + it->w > max_w)
 		return 1;
+
 	items.push_back(it);
 	total_w += it->w;
 	total_p += it->p;
