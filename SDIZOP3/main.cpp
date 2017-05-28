@@ -1,24 +1,19 @@
 #include <iostream>
-#include <queue>
-#include "Backpack.h"
+#include <vector>
+
+#include "BackpackProblem.h"
 
 int main() {
 	
-	Item it;
-	it.randomizePrice(1, 10);
-	it.randomizeWeight(1, 10);
+	std::vector<Item> items = BackpackProblem::getRandomItems(10, 1, 100, 1, 20);
 
-	Item it2;
-	it2.randomizePrice(1, 10);
-	it2.randomizeWeight(1, 10);
+	for (Item& it : items) {
+		std::cout << it.toString()<<"\n";
+	}
 
-	Backpack bp(30);
-	bp.add(&it);
-	bp.add(&it2);
-	std::cout << "test";
-
-	//std::cout << it.toString() << ", "<<it2.toString()<<"\n" << bp.getTotalPrice() << "\n" << bp.getTotalWeight() << "\n";
-	std::cout << bp.toString();
+	Backpack bp = BackpackProblem::solveFullCheck(items, 30);
+	
+	std::cout << bp.toString()<<"\n";
 
 	return 0;
 }

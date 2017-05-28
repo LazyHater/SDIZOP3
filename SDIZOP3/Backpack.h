@@ -6,11 +6,7 @@
 #include "Item.h"
 class Backpack
 {
-	int total_w = 0;
-	int total_p = 0;
-	int max_w;
-	std::deque<Item*> items;
-
+	
 public:
 	int add(Item* it);
 	inline int getTotalPrice() { return total_p; }
@@ -21,6 +17,9 @@ public:
 	~Backpack();
 
 private:
-
+	int total_w = 0;
+	int total_p = 0;
+	int max_w;
+	std::deque<Item*> items;
 };
 
