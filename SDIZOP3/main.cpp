@@ -10,6 +10,11 @@ int main() {
 	std::cout << graph.toString() << "\n\n";
 
 	TSP::fullCheckAlgorithm(graph);
+	for (auto i : TSP::greedyAlgorithm(graph, 0)) {
+		std::cout << i;
+	}
+	std::cout << std::endl;
+	
 
 	return 0;
 }

@@ -1,7 +1,10 @@
 ﻿#include "TSP.h"
+#include "Graph.h"
+
 #include <algorithm>
 #include <iostream>
-#include "Graph.h"
+#include <limits.h>
+
 
 TSP::TSP()
 {
@@ -10,6 +13,39 @@ TSP::TSP()
 
 TSP::~TSP()
 {
+}
+
+
+std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
+{
+	std::vector<int> visited, result;
+
+	int current = start_v;
+	//visited.push_back(current);
+
+	for (int i = 0; i < graph.getV(); i++) {
+		auto neightbours = graph.neighbors(current);
+		int min = INT_MAX / 2;
+		int min_v = -1;
+
+		for (int vertex : neightbours)
+			if (graph.getEdgeValue(current, vertex) < min)
+				if (std::find(visited.begin(), visited.end(), vertex) == visited.end()) {
+					min = graph.getEdgeValue(current, vertex);
+					min_v = vertex;
+				}
+		
+		if (min_v < 0) {
+			std::cerr << "Could not complete graph!\n";
+			return result;
+		}
+		
+		visited.push_back(min_v);
+		result.push_back(min_v);
+		current = min_v;
+	}
+
+	return result;
 }
 
 std::vector<int> TSP::fullCheckAlgorithm(const Graph& graph)

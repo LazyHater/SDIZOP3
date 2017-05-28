@@ -28,6 +28,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AdjacencyMatrix.cpp">
+<<<<<<< HEAD
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Edge.cpp">
@@ -35,6 +36,15 @@
     </ClCompile>
     <ClCompile Include="Graph.cpp">
       <Filter>Header Files</Filter>
+=======
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Edge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Source Files</Filter>
+>>>>>>> 09b6f431674d07ded73f0f68c2e1e555a9f39e80
     </ClCompile>
     <ClCompile Include="TSP.cpp">
       <Filter>Source Files</Filter>
