@@ -15,6 +15,7 @@ int main() {
 	Backpack bp(30);
 	bp.add(&it);
 	bp.add(&it2);
+	std::cout << "test";
 
 	//std::cout << it.toString() << ", "<<it2.toString()<<"\n" << bp.getTotalPrice() << "\n" << bp.getTotalWeight() << "\n";
 	std::cout << bp.toString();
