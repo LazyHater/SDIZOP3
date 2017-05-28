@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Graph.h"
 #include <iostream>
 #include <fstream>

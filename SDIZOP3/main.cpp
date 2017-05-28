@@ -1,24 +1,15 @@
 #include <iostream>
 #include <queue>
 #include "Backpack.h"
+#include "AdjacencyMatrix.h"
+#include "TSP.h"
 
 int main() {
-	
-	Item it;
-	it.randomizePrice(1, 10);
-	it.randomizeWeight(1, 10);
+	AdjacencyMatrix graph;
+	graph.loadFile("C:\\Users\\Razoff\\Desktop\\dane_droga.txt", 0);
+	std::cout << graph.toString() << "\n\n";
 
-	Item it2;
-	it2.randomizePrice(1, 10);
-	it2.randomizeWeight(1, 10);
-
-	Backpack bp(30);
-	bp.add(&it);
-	bp.add(&it2);
-	std::cout << "test";
-
-	//std::cout << it.toString() << ", "<<it2.toString()<<"\n" << bp.getTotalPrice() << "\n" << bp.getTotalWeight() << "\n";
-	std::cout << bp.toString();
+	TSP::fullCheckAlgorithm(graph);
 
 	return 0;
 }

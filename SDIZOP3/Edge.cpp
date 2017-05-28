@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Edge.h"
 #include <string>
 #include <sstream>
