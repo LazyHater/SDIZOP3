@@ -11,7 +11,7 @@ int main() {
 		std::cout << it.toString()<<"\n";
 	}
 
-	Backpack bp = BackpackProblem::solveFullCheck(items, 30);
+	Backpack bp = BackpackProblem::solveGreedyApproximation(items, 30);
 	
 	std::cout << bp.toString()<<"\n";
 

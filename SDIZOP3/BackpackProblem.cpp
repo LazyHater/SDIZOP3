@@ -1,6 +1,6 @@
 #include "BackpackProblem.h"
 #include <iostream>
-
+#include <algorithm>
 
 
 
@@ -39,6 +39,20 @@ Backpack BackpackProblem::solveFullCheck(std::vector<Item>& items, int backpack_
 	}
 
 	return best_bp;
+}
+
+Backpack BackpackProblem::solveGreedyApproximation(std::vector<Item>& items, int backpack_w)
+{
+	Backpack bp(backpack_w);
+
+	std::sort(items.begin(), items.end(), [](const Item& lhs, const Item& rhs) {
+		return lhs.p > rhs.p;
+	});
+
+	for (Item& it : items)
+		bp.add(&it);
+
+	return bp;
 }
 
 BackpackProblem::BackpackProblem()
