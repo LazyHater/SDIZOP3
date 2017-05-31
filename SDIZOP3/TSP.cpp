@@ -21,15 +21,17 @@ std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 	std::vector<int> visited, result;
 
 	int current = start_v;
-	//visited.push_back(current);
-
+	visited.push_back(current);
+	result.push_back(current);
 	for (int i = 0; i < graph.getV(); i++) {
 		auto neightbours = graph.neighbors(current);
 		int min = INT_MAX / 2;
 		int min_v = -1;
 
 		for (int vertex : neightbours)
+			//if it is 'closer' than min
 			if (graph.getEdgeValue(current, vertex) < min)
+				//and not visited yet
 				if (std::find(visited.begin(), visited.end(), vertex) == visited.end()) {
 					min = graph.getEdgeValue(current, vertex);
 					min_v = vertex;

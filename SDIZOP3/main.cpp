@@ -17,7 +17,7 @@
 
 int main() {
 	AdjacencyMatrix graph;
-	graph.loadFile("C:\\Users\\Razoff\\Desktop\\dane_droga.txt", 0);
+	graph.loadFile("C:\\Users\\Wakabajaszi\\Desktop\\dane.txt", true);
 	std::cout << graph.toString() << "\n\n";
 
 	TSP::fullCheckAlgorithm(graph);
