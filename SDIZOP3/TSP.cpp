@@ -18,11 +18,11 @@ TSP::~TSP()
 
 std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 {
-	std::vector<int> visited, result;
+	std::vector<int> visited;
 
 	int current = start_v;
 	visited.push_back(current);
-	result.push_back(current);
+
 	for (int i = 0; i < graph.getV(); i++) {
 		auto neightbours = graph.neighbors(current);
 		int min = INT_MAX / 2;
@@ -39,15 +39,14 @@ std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 		
 		if (min_v < 0) {
 			std::cerr << "Could not complete graph!\n";
-			return result;
+			return visited;
 		}
 		
 		visited.push_back(min_v);
-		result.push_back(min_v);
 		current = min_v;
 	}
 
-	return result;
+	return visited;
 }
 
 std::vector<int> TSP::fullCheckAlgorithm(const Graph& graph)
