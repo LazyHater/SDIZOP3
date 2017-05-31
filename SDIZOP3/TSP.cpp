@@ -23,7 +23,7 @@ std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 	int current = start_v;
 	visited.push_back(current);
 
-	for (int i = 0; i < graph.getV(); i++) {
+	for (int i = 0; i < graph.getV() - 1; i++) {
 		auto neightbours = graph.neighbors(current);
 		int min = INT_MAX / 2;
 		int min_v = -1;

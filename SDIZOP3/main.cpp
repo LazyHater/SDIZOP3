@@ -3,6 +3,7 @@
 #include "Backpack.h"
 #include "AdjacencyMatrix.h"
 #include "TSP.h"
+#include "BackpackProblem.h"
 
 /*GRAF TESTOWY
 8 6
@@ -24,8 +25,6 @@ int main() {
 	for (auto i : TSP::greedyAlgorithm(graph, 0)) {
 		std::cout << i;
 	}
-	std::cout << std::endl;
-	
-
+	std::cout << std::endl << BackpackProblem::solveGreedyApproximation(BackpackProblem::getRandomItems(20, 0, 100, 1, 10), 30).toString() << "\n";
 	return 0;
 }
