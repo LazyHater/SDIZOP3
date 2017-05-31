@@ -6,13 +6,15 @@
 #include "Item.h"
 class Backpack
 {
-	
 public:
-	int add(Item* it);
-	inline int getTotalPrice() { return total_p; }
-	inline int getTotalWeight() { return total_w; }
-	inline int getTotalMaxWeight() { return max_w; }
-	std::string toString();
+	inline int getTotalPrice()		const	{ return total_p; }
+	inline int getTotalWeight()		const	{ return total_w; }
+	inline int getTotalMaxWeight()	const	{ return max_w;	  }
+
+	int addItem(Item* it);
+	std::vector<Item> getItems() const;
+	std::string toString() const;
+
 	Backpack(int max_w);
 	~Backpack();
 

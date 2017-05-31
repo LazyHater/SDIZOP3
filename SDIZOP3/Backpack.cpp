@@ -1,8 +1,6 @@
 #include "Backpack.h"
 
-
-
-int Backpack::add(Item* it)
+int Backpack::addItem(Item* it)
 {
 	if (total_w + it->w > max_w)
 		return 1;
@@ -13,7 +11,17 @@ int Backpack::add(Item* it)
 	return 0;
 }
 
-std::string Backpack::toString()
+std::vector<Item> Backpack::getItems() const
+{
+	std::vector<Item> vec;
+
+	for (Item* it : items)
+		vec.push_back(*it);
+
+	return vec;
+}
+
+std::string Backpack::toString() const
 {
 	std::string buff = "{total_p: ";
 	buff.append(std::to_string(total_p));

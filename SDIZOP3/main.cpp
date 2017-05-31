@@ -25,6 +25,14 @@ int main() {
 	for (auto i : TSP::greedyAlgorithm(graph, 0)) {
 		std::cout << i;
 	}
-	std::cout << std::endl << BackpackProblem::solveGreedyApproximation(BackpackProblem::getRandomItems(20, 0, 100, 1, 10), 30).toString() << "\n";
+	std::cout << std::endl << BackpackProblem::solveGreedyApproximation(BackpackProblem::getRandomItems(20, 0, 100, 1, 10), 30).toString() << "\n\n\n";
+	std::vector<Item> vec;
+	int bp_w;
+
+	BackpackProblem::loadFromFile("C:\\Users\\Wakabajaszi\\Desktop\\bpp.txt", vec, bp_w);
+	Backpack bp(bp_w);
+	for (auto& it : vec)
+		bp.addItem(&it);
+	std::cout << bp.toString() << "\n";
 	return 0;
 }
