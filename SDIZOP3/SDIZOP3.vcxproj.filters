@@ -1,76 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="AdjacencyMatrix.cpp" />
+    <ClCompile Include="Backpack.cpp" />
+    <ClCompile Include="BackpackProblem.cpp" />
+    <ClCompile Include="Edge.cpp" />
+    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TSP.cpp" />
+    <ClCompile Include="PerformanceTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Backpack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BackpackProblem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AdjacencyMatrix.cpp">
-<<<<<<< HEAD
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Edge.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph.cpp">
-      <Filter>Header Files</Filter>
-=======
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Edge.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph.cpp">
-      <Filter>Source Files</Filter>
->>>>>>> 09b6f431674d07ded73f0f68c2e1e555a9f39e80
-    </ClCompile>
-    <ClCompile Include="TSP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BackpackProblem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Backpack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AdjacencyMatrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Edge.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TSP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="AdjacencyMatrix.h" />
+    <ClInclude Include="Backpack.h" />
+    <ClInclude Include="BackpackProblem.h" />
+    <ClInclude Include="Edge.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="TSP.h" />
+    <ClInclude Include="PerformanceTests.h" />
   </ItemGroup>
 </Project>

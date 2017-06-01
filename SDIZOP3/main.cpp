@@ -4,6 +4,7 @@
 #include "AdjacencyMatrix.h"
 #include "TSP.h"
 #include "BackpackProblem.h"
+#include "PerformanceTests.h"
 
 /*GRAF TESTOWY
 8 6
@@ -34,5 +35,7 @@ int main() {
 	for (auto& it : vec)
 		bp.addItem(&it);
 	std::cout << bp.toString() << "\n";
+
+	PerformanceTests::makeBackpackTests();
 	return 0;
 }

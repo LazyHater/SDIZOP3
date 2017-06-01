@@ -146,6 +146,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PerformanceTests.cpp" />
     <ClCompile Include="TSP.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="PerformanceTests.h" />
     <ClInclude Include="TSP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
