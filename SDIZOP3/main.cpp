@@ -19,7 +19,7 @@
 
 int main() {
 	AdjacencyMatrix graph;
-	graph.loadFile("C:\\Users\\Wakabajaszi\\Desktop\\dane.txt", true);
+	graph.loadRawFromFile("C:\\Users\\Wakabajaszi\\Desktop\\dane_raw.txt");
 	std::cout << graph.toString() << "\n\n";
 
 	TSP::fullCheckAlgorithm(graph);
@@ -36,6 +36,6 @@ int main() {
 		bp.addItem(&it);
 	std::cout << bp.toString() << "\n";
 
-	PerformanceTests::makeBackpackTests();
+	//PerformanceTests::makeBackpackTests();
 	return 0;
 }

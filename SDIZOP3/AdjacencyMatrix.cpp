@@ -3,6 +3,7 @@
 #include <climits>
 #include <sstream>
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <vector>
 #include <deque>
@@ -112,4 +113,30 @@ std::vector<Edge> AdjacencyMatrix::getEdges() const {
 			if (adjacent(x, y))
 				edges.push_back(Edge(x, y, getEdgeValue(x, y)));
 	return edges;
+}
+
+int AdjacencyMatrix::loadRawFromFile(const std::string fname)
+{
+	clear();
+	int size;
+	std::ifstream file(fname, std::ios::out);
+	if (file.is_open()) {
+		file >> size;
+		V = size;
+		E = size*(size-1);
+		matrix.reserve(size);
+		for (int j = 0; j < size; j++) {
+			std::vector<int> vec(size);
+			for (int i = 0; i < size; i++)
+				file >> vec[i];
+			matrix.push_back(vec);
+		}
+		file.close();
+		return 0;
+	}
+	else {
+		std::cerr << "Cannot open file!\n";
+		system("pause");
+		return -1;
+	}
 }

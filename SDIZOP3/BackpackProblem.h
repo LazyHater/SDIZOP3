@@ -8,7 +8,7 @@ public:
 	static Backpack solveFullCheck(std::vector<Item>& items, int backpack_w);
 	static Backpack solveGreedyApproximation(std::vector<Item>& items, int backpack_w);
 
-	static void BackpackProblem::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp_w);
+	static int BackpackProblem::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp_w);
 
 	BackpackProblem();
 	~BackpackProblem();

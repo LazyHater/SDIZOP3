@@ -55,7 +55,7 @@ Backpack BackpackProblem::solveGreedyApproximation(std::vector<Item>& items, int
 	return bp;
 }
 
-void BackpackProblem::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp_w)
+int BackpackProblem::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp_w)
 {
 	items.clear();
 	int it_w, it_p, it_n;
@@ -66,10 +66,12 @@ void BackpackProblem::loadFromFile(const std::string fname, std::vector<Item>& i
 			items.push_back(Item(it_p, it_w));
 		}
 		file.close();
+		return 0;
 	}
 	else {
 		std::cerr << "Cannot open file.\n";
 		system("pause");
+		return -1;
 	}
 }
 

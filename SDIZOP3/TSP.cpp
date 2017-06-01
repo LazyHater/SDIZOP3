@@ -73,6 +73,9 @@ std::vector<int> TSP::fullCheckAlgorithm(const Graph& graph)
 				break;
 			}
 		}
+
+		currentWeight += graph.getEdgeValue(permutation[permutation.size() - 1], permutation[0]);
+
 		if (skip) continue;
 		for (auto i : permutation) {
 			std::cout << i;
