@@ -27,6 +27,7 @@ public:
 	}
 
 	static void makeBackpackTests();
+	static void makeTspTests();
 	PerformanceTests();
 	~PerformanceTests();
 };

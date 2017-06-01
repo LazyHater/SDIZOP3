@@ -77,22 +77,12 @@ std::vector<int> TSP::fullCheckAlgorithm(const Graph& graph)
 		currentWeight += graph.getEdgeValue(permutation[permutation.size() - 1], permutation[0]);
 
 		if (skip) continue;
-		for (auto i : permutation) {
-			std::cout << i;
-		}
-		std::cout << " Weight: " << currentWeight << "\n";
+
 		if (currentWeight < minWeight) {
 			minWeight = currentWeight;
 			result = permutation;
 		}
 	} while (std::next_permutation(&permutation[0], &permutation[permutation.size() - 1]));
-
-	std::cout << "Result: ";
-	for (auto i : result) {
-		std::cout << i;
-	}
-	std::cout << "\nWeight:" << minWeight << std::endl;
-
 
 	return result;
 }
