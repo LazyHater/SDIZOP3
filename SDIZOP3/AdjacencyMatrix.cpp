@@ -140,3 +140,17 @@ int AdjacencyMatrix::loadRawFromFile(const std::string fname)
 		return -1;
 	}
 }
+
+void AdjacencyMatrix::generateFullGraph(int size)
+{
+	clear();
+	V = size;
+	E = size*(size-1);
+	matrix.reserve(size);
+	for (int j = 0; j < size; j++) {
+		std::vector<int> vec(size);
+		for (int i = 0; i < size; i++)
+			vec[i] = (i != j) ? rand() % 99 + 1 : INT_MAX;
+		matrix.push_back(vec);
+	}
+}
