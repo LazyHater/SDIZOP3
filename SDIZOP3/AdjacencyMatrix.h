@@ -17,6 +17,9 @@ public:
 	virtual Graph & addEdge(int x, int y, int val, bool isDirected = false) override;
 	virtual int getEdgeValue(int x, int y) const override;
 	virtual std::vector<Edge> getEdges() const;
+
+	int loadRawFromFile(const std::string fname);
+
 	virtual std::string toString() const override;
 	virtual Graph & clear() override;
 private:
