@@ -19,6 +19,7 @@ public:
 	virtual std::vector<Edge> getEdges() const;
 
 	int loadRawFromFile(const std::string fname);
+	void generateFullGraph(int size);
 
 	virtual std::string toString() const override;
 	virtual Graph & clear() override;
