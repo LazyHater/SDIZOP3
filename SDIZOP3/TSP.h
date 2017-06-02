@@ -11,6 +11,7 @@ public:
 
 	static std::vector<int> fullCheckAlgorithm(const Graph& graph);
 	static std::vector<int> greedyAlgorithm(const Graph& graph, int start_v);
+	static bool nextPermutation(int* begin, int* end);
 
 };
 

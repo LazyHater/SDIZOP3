@@ -74,7 +74,7 @@ void PerformanceTests::makeTspTests()
 {
 	std::cout << "TESTING TSP\n";
 	std::vector<TspResult> results;
-	for (int n = 1; n < 13; n++) {
+	for (int n = 1; n < 12; n++) {
 		TspResult result;
 		result.n = n;
 		

@@ -49,6 +49,44 @@ std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 	return visited;
 }
 
+bool TSP::nextPermutation(int * begin, int * end)
+{
+	//find longest non-increasing suffix 
+	int* pivot = end;
+	while ((pivot > begin)&&(*(pivot) <= *(pivot - 1))) 
+		pivot--;
+	
+
+	//that is the last sequence
+	if (pivot <= begin)
+		return false;
+
+	//identify pivot
+	pivot--;
+
+	int* succesor = end;
+	while (*succesor <= *pivot) {
+		succesor--;
+	}
+
+	//swap pivot and succesor
+	int tmp = *pivot;
+	*pivot = *succesor;
+	*succesor = tmp;
+
+	//reverse suffix
+	pivot++;
+	while (pivot < end) {
+		int tmp = *pivot;
+		*pivot = *end;
+		*end = tmp;
+		pivot++;
+		end--;
+	}
+
+	return true;
+}
+
 std::vector<int> TSP::fullCheckAlgorithm(const Graph& graph)
 {
 	int currentWeight = 0;
@@ -73,7 +111,7 @@ std::vector<int> TSP::fullCheckAlgorithm(const Graph& graph)
 			minWeight = currentWeight;
 			memcpy(best, permutation, graph.getV() * sizeof(int));
 		}
-	} while (std::next_permutation(&permutation[0], &permutation[graph.getV() - 1]));
+	} while (nextPermutation(permutation, permutation + graph.getV() - 1));
 
 	for (int i = 0; i < graph.getV(); i++) {
 		result.push_back(best[i]);

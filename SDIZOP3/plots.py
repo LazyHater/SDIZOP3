@@ -67,18 +67,25 @@ x_axis.sort()
 full_y = [row[1] for row in rows]
 greedy_y = [row[2] for row in rows]
 
+max_time = max(full_y)
+max_n = max(x_axis) 
+
+def fact(x):
+	if x == 0 : return 1
+	tmp = 1	
+	for i in range(int(x)):
+		tmp *= i+1
+	return tmp
+
+per_permutation =  float(float(max_time) / float(fact(max_n)))
+print ("per perm: %f"%per_permutation)
+
+
 plt.clf()
 plt.cla()
 
+
 plt.subplot(211)
-plt.title("Tsp problem full check alghoritm")
-plt.ylabel("Time of execution[ms]")
-plt.xlabel("Number of cities")
-plt.grid(True)
-plt.plot(x_axis, full_y, 'bo-')
-
-
-plt.subplot(212)
 plt.title("Tsp problem greedy alghoritm")
 plt.ylabel("Time of execution[ms]")
 plt.xlabel("Number of cities")
@@ -86,4 +93,20 @@ plt.grid(True)
 plt.plot(x_axis, greedy_y, 'bo-')
 plt.gca().yaxis.set_minor_formatter(NullFormatter())
 
+#x_axis.append(50);
+#x_axis.append(100);
+#x_axis.append(150);
+#full_y.append(fact(50)*per_permutation)
+#full_y.append(fact(100)*per_permutation)
+#full_y.append(fact(150)*per_permutation)
+
+plt.subplot(212)
+plt.title("Tsp problem full check alghoritm")
+plt.ylabel("Time of execution[ms]")
+plt.xlabel("Number of cities")
+plt.grid(True)
+plt.plot(x_axis, full_y, 'bo-')
+
+
 plt.savefig("tsp_plot.png")
+print (fact(3))
