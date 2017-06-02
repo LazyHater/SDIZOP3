@@ -18,7 +18,7 @@
 4 5 4*/
 
 int main() {
-	PerformanceTests::makeBackpackTests();
+	//PerformanceTests::makeBackpackTests();
 	PerformanceTests::makeTspTests();
 	return 0;
 }

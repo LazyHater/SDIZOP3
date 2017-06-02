@@ -54,35 +54,32 @@ std::vector<int> TSP::fullCheckAlgorithm(const Graph& graph)
 	int currentWeight = 0;
 	int minWeight = 99999;
 	std::vector<int> result;
-	std::vector<int> permutation(graph.getV());
-	for (int i = 0; i < permutation.size(); i++) {
+	int* permutation = new int[graph.getV()];
+	int* best = new int[graph.getV()];
+
+	for (int i = 0; i < graph.getV(); i++) {
 		permutation[i] = i;
+		best[i] = -1;
 	}
 
-	std::sort(&permutation[0], &permutation[permutation.size() - 1]);
-
 	do {
-		bool skip = false;
 		currentWeight = 0;
-		for (int i = 0; i < permutation.size()-1; i++) {
-			if (graph.adjacent(permutation[i], permutation[i + 1])) {
-				currentWeight += graph.getEdgeValue(permutation[i], permutation[i + 1]);
-			}
-			else {
-				skip = true;
-				break;
-			}
+		for (int i = 0; i < graph.getV() - 1; i++) {
+			currentWeight += graph.getEdgeValue(permutation[i], permutation[i + 1]);
 		}
-
-		currentWeight += graph.getEdgeValue(permutation[permutation.size() - 1], permutation[0]);
-
-		if (skip) continue;
+		currentWeight += graph.getEdgeValue(permutation[graph.getV() - 1], permutation[0]);
 
 		if (currentWeight < minWeight) {
 			minWeight = currentWeight;
-			result = permutation;
+			memcpy(best, permutation, graph.getV() * sizeof(int));
 		}
-	} while (std::next_permutation(&permutation[0], &permutation[permutation.size() - 1]));
+	} while (std::next_permutation(&permutation[0], &permutation[graph.getV() - 1]));
 
+	for (int i = 0; i < graph.getV(); i++) {
+		result.push_back(best[i]);
+	}
+
+	delete permutation;
+	delete best;
 	return result;
 }

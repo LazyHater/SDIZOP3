@@ -75,11 +75,6 @@ Graph & AdjacencyMatrix::addEdge(int x, int y, int val, bool isDirected)
 	return *this;
 }
 
-int AdjacencyMatrix::getEdgeValue(int x, int y) const
-{
-	return matrix[x][y];
-}
-
 std::string AdjacencyMatrix::toString() const
 {
 	std::stringstream ss;

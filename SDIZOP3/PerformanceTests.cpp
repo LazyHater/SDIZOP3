@@ -74,13 +74,12 @@ void PerformanceTests::makeTspTests()
 {
 	std::cout << "TESTING TSP\n";
 	std::vector<TspResult> results;
-	for (int n = 1; n < 12; n++) {
+	for (int n = 1; n < 13; n++) {
 		TspResult result;
 		result.n = n;
-
-		std::cout << "TEST FOR n: " << n << "\n";
+		
 		for (int i = 0; i < 100; i++) {
-
+			std::cout << "TEST FOR n: " << n << " #" << i << "/100\n";
 			AdjacencyMatrix mat;
 			mat.generateFullGraph(n);
 

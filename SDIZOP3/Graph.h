@@ -10,8 +10,8 @@ public:
 	Graph() {};
 	virtual ~Graph() {};
 
-	int getV() const; // returns the amount of vertexes
-	int getE() const; // returns the amount of edges
+	inline int getV() const { return V; }; // returns the amount of vertexes
+	inline int getE() const { return E; }; // returns the amount of edges
 
 	bool loadFile(std::string filename, bool isDirected); // loads the graph from a file filename
 	Graph& generateRandomly(int n, double fill, bool isDirected = true); // generates the graph with n vertexes and fill density

@@ -6,16 +6,6 @@
 
 using namespace std;
 
-int Graph::getV() const
-{
-	return V;
-}
-
-int Graph::getE() const
-{
-	return E;
-}
-
 bool Graph::loadFile(string filename, bool isDirected)
 {
 	clear();

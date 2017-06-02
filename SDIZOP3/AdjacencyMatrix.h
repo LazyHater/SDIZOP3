@@ -15,7 +15,7 @@ public:
 	virtual std::deque<int> neighbors(int x) const override;
 	virtual Graph & addVertex(int x) override;
 	virtual Graph & addEdge(int x, int y, int val, bool isDirected = false) override;
-	virtual int getEdgeValue(int x, int y) const override;
+	inline virtual int getEdgeValue(int x, int y) const override {return matrix[x][y];}
 	virtual std::vector<Edge> getEdges() const;
 
 	int loadRawFromFile(const std::string fname);
