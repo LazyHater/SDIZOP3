@@ -9,7 +9,7 @@ class Backpack
 public:
 	inline int getTotalPrice()		const { return total_p; }
 	inline int getTotalWeight()		const { return total_w; }
-	inline int getTotalMaxWeight()	const { return max_w; }
+	inline int getMaxWeight()		const { return max_w; }
 
 	int addItem(Item* it);
 	std::vector<Item> getItems() const;

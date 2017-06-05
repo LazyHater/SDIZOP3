@@ -38,14 +38,14 @@ void PerformanceTests::makeBackpackTests()
 			std::cout << "TEST FOR it_n: " << it_n << " bp_w: " << bp_w << "\n";
 			for (int i = 0; i < 100; i++) {
 
-				auto items = BackpackProblem::getRandomItems(it_n, 1, 100, 5, 30);
+				auto items = DKP::generateRandomsItems(it_n, 1, 100, 5, 30);
 
 				StartCounter();
-				BackpackProblem::solveFullCheck(items, bp_w);
+				DKP::fullCheckAlgorithm(items, bp_w);
 				result.backpackFullCheck += GetCounter() / 100.0f;
 
 				StartCounter();
-				BackpackProblem::solveGreedyApproximation(items, bp_w);
+				DKP::greedyAlgorithm(items, bp_w);
 				result.backpackGreedy += GetCounter() / 100.0f;
 			}
 			results.push_back(result);

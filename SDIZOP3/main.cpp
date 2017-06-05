@@ -150,14 +150,12 @@ void tspMenu() {
 		case 1: // Load graph from file, UNDIRECTED
 			std::cout << "Podaj nazwe pliku: ";
 			std::cin >> filename;
-			if (matrixGraph.loadFile(filename, false)) isLoaded = true;
+			if (matrixGraph.loadRawFromFile(filename)) isLoaded = true;
 			break;
 		case 2: { // Generate graph
 			std::cout << "Podaj ilosc miast: ";
 			std::cin >> vertexes;
-			std::cout << "\nPodaj gestosc: ";
-			std::cin >> density;
-			matrixGraph.generateRandomly(vertexes, density, false);
+			matrixGraph.generateFullGraph(vertexes);
 			isLoaded = true;
 		}
 				break;
@@ -246,5 +244,6 @@ void mainMenu() {
 }
 
 int main() {
+	mainMenu();
 	return 0;
 }

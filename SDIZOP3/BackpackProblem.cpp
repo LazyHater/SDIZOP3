@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <fstream>
 
-std::vector<Item> BackpackProblem::getRandomItems(int n, int p_from, int p_to, int w_from, int w_to)
+std::vector<Item> DKP::generateRandomsItems(int n, int p_from, int p_to, int w_from, int w_to)
 {
 	std::vector<Item> items;
 	items.reserve(n);
@@ -18,7 +18,7 @@ std::vector<Item> BackpackProblem::getRandomItems(int n, int p_from, int p_to, i
 	return items;
 }
 
-Backpack BackpackProblem::solveFullCheck(std::vector<Item>& items, int backpack_w)
+Backpack DKP::fullCheckAlgorithm(std::vector<Item>& items, int backpack_w)
 {
 	size_t items_n = items.size();
 	Backpack best_bp(backpack_w);
@@ -41,7 +41,7 @@ Backpack BackpackProblem::solveFullCheck(std::vector<Item>& items, int backpack_
 	return best_bp;
 }
 
-Backpack BackpackProblem::solveGreedyApproximation(std::vector<Item>& items, int backpack_w)
+Backpack DKP::greedyAlgorithm(std::vector<Item>& items, int backpack_w)
 {
 	Backpack bp(backpack_w);
 
@@ -55,7 +55,7 @@ Backpack BackpackProblem::solveGreedyApproximation(std::vector<Item>& items, int
 	return bp;
 }
 
-int BackpackProblem::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp_w)
+int DKP::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp_w)
 {
 	items.clear();
 	int it_w, it_p, it_n;
@@ -75,11 +75,11 @@ int BackpackProblem::loadFromFile(const std::string fname, std::vector<Item>& it
 	}
 }
 
-BackpackProblem::BackpackProblem()
+DKP::DKP()
 {
 }
 
 
-BackpackProblem::~BackpackProblem()
+DKP::~DKP()
 {
 }

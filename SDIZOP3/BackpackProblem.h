@@ -1,16 +1,16 @@
 #pragma once
 #include "Backpack.h"
 
-class BackpackProblem
+class DKP
 {
 public:
-	static std::vector<Item> getRandomItems(int n, int p_from, int p_to, int w_from, int w_to);
-	static Backpack solveFullCheck(std::vector<Item>& items, int backpack_w);
-	static Backpack solveGreedyApproximation(std::vector<Item>& items, int backpack_w);
+	static std::vector<Item> generateRandomsItems(int n, int p_from, int p_to, int w_from, int w_to);
+	static Backpack fullCheckAlgorithm(std::vector<Item>& items, int backpack_w);
+	static Backpack greedyAlgorithm(std::vector<Item>& items, int backpack_w);
 
-	static int BackpackProblem::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp_w);
+	static int DKP::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp_w);
 
-	BackpackProblem();
-	~BackpackProblem();
+	DKP();
+	~DKP();
 };
 
