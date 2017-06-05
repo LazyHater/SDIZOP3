@@ -48,61 +48,81 @@ std::vector<Edge> eraseDuplicats(const std::vector<Edge>& inputEdges) {
 void dkpMenu() {
 	int option = 0, maxWeight = 0, amount = 0;
 	bool end = false, isLoaded = false;
+	std::vector<Item> items;
 	std::string filename;
+	Backpack *bp = NULL;
 
 	while (!end) {
 		system("cls");
 		option = 0;
 		std::cout << "\n-----DYSKRETNY PROBLEM PLECAKOWY------" << std::endl
-			<< "1. Wczytaj plecak z pliku" << std::endl
-			<< "2. Wygeneruj plecak losowo" << std::endl
-			<< "3. Wyswietl plecak" << std::endl
-			<< "4. Przeglad zupelny" << std::endl
-			<< "5. Algorytm zachlanny" << std::endl
-			<< "6. Algorytm oparty na programowaniu dynamicznym" << std::endl
-			<< "7. Powrot" << std::endl
+			<< "1. Wczytaj przedmioty z pliku" << std::endl
+			<< "2. Wygeneruj przedmioty losowo" << std::endl
+			<< "3. Wyswietl przedmioty" << std::endl
+			<< "4. Wyswietl plecak wynikowy" << std::endl
+			<< "5. Przeglad zupelny" << std::endl
+			<< "6. Algorytm zachlanny" << std::endl
+			<< "7. Algorytm oparty na programowaniu dynamicznym" << std::endl
+			<< "8. Powrot" << std::endl
 			<< "Twoj wybor: ";
-		while (option < 1 || option > 7) {
+		while (option < 1 || option > 8) {
 			std::cin >> option;
 		}
 		std::cout << std::endl;
 
 		switch (option) {
-		case 1: // Load backpack from file
+		case 1: // Load items from file
 			std::cout << "Podaj nazwe pliku: ";
 			std::cin >> filename;
-			isLoaded = true;
+			if (!DKP::loadFromFile(filename, items, maxWeight)) {
+				isLoaded = true;
+			}
+			else {
+				isLoaded = false;
+			}
 			break;
-		case 2: { // Generate backpack
-			std::cout << "Podaj pojemnosc plecaka: ";
-			std::cin >> maxWeight;
+		case 2: { // Generate items
 			std::cout << "Podaj ilosc przedmiotow: ";
 			std::cin >> amount;
+			std::cout << "Podaj maksymalna pojemnosc plecaka: ";
+			std::cin >> maxWeight;
+			items = DKP::generateRandomsItems(amount, 1, 100, 1, 20);
 			isLoaded = true;
 		}
 				break;
-		case 3: // Show backpack
-
+		case 3: // Show items
+			std::cout << "Maksymalna waga: " << maxWeight << "\n";
+			for (auto val : items) {
+				std::cout << val.toString() << "\n";
+			}
+			std::cout << std::endl;
 			system("pause");
 			break;
-		case 4: // Full check algorithm
+		case 4:
+			std::cout << bp->toString() << std::endl;
+			system("pause");
+			break;
+		case 5: // Full check algorithm
 			if (isLoaded) {
-
+				bp = &DKP::fullCheckAlgorithm(items, maxWeight);
+				std::cout << "Czas: " << GetCounter() << "\n";
 			}
 			else {
-				std::cerr << "Najpierw wygeneruj lub zaladuj graf z pliku!\n";
+				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
 			}
 			system("pause");
-		case 5: // Greedy algorithms
+		case 6: // Greedy algorithms
 			if (isLoaded) {
-
+				StartCounter();
+				bp = &DKP::greedyAlgorithm(items, maxWeight);
+				std::cout << "Czas: " << GetCounter() << "\n";
 			}
 			else {
-				std::cerr << "Najpierw wygeneruj lub zaladuj graf z pliku!\n";
+				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
 			}
 			system("pause");
 			break;
-		case 6: // Dynamic programming algorithm
+		case 7: // Dynamic programming algorithm
 			if (isLoaded) {
 				//TODO
 			}
@@ -111,7 +131,7 @@ void dkpMenu() {
 			}
 			system("pause");
 			break;
-		case 7: // Exit
+		case 8: // Exit
 			end = true;
 			break;
 		default:
@@ -166,19 +186,27 @@ void tspMenu() {
 		case 4: // Full check algorithm
 			if (isLoaded) {
 				StartCounter();
-				TSP::fullCheckAlgorithm(matrixGraph);
-				std::cout << GetCounter() << std::endl;
+				auto result = TSP::fullCheckAlgorithm(matrixGraph);
+				std::cout << "Czas: " << GetCounter() << "\n";
+				for (auto val : result) {
+					std::cout << val << " ";
+				}
+				std::cout << std::endl;
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj graf z pliku!\n";
 			}
 			system("pause");
 			break;
-		case 5: // Greedy algorithms
+		case 5: // Greedy algorithm
 			if (isLoaded) {
 				StartCounter();
-				TSP::greedyAlgorithm(matrixGraph, 0);
-				std::cout << GetCounter() << std::endl;
+				auto result = TSP::greedyAlgorithm(matrixGraph, 0);
+				std::cout << "Czas: " << GetCounter() << "\n";
+				for (auto val : result) {
+					std::cout << val << " ";
+				}
+				std::cout << std::endl;
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj graf z pliku!\n";
