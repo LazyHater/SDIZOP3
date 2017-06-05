@@ -104,8 +104,10 @@ void dkpMenu() {
 			break;
 		case 5: // Full check algorithm
 			if (isLoaded) {
+				StartCounter();
 				bp = &DKP::fullCheckAlgorithm(items, maxWeight);
-				std::cout << "Czas: " << GetCounter() << "\n";
+				double time = GetCounter();
+				std::cout << "Czas: " << time << "\n";
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
@@ -115,7 +117,8 @@ void dkpMenu() {
 			if (isLoaded) {
 				StartCounter();
 				bp = &DKP::greedyAlgorithm(items, maxWeight);
-				std::cout << "Czas: " << GetCounter() << "\n";
+				double time = GetCounter();
+				std::cout << "Czas: " << time << "\n";
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
@@ -187,7 +190,9 @@ void tspMenu() {
 			if (isLoaded) {
 				StartCounter();
 				auto result = TSP::fullCheckAlgorithm(matrixGraph);
-				std::cout << "Czas: " << GetCounter() << "\n";
+				double time = GetCounter();
+				std::cout << "Czas: " << time << "\n";
+				
 				for (auto val : result) {
 					std::cout << val << " ";
 				}
@@ -202,7 +207,9 @@ void tspMenu() {
 			if (isLoaded) {
 				StartCounter();
 				auto result = TSP::greedyAlgorithm(matrixGraph, 0);
-				std::cout << "Czas: " << GetCounter() << "\n";
+				double time = GetCounter();
+				std::cout << "Czas: " << time << "\n";
+				
 				for (auto val : result) {
 					std::cout << val << " ";
 				}
