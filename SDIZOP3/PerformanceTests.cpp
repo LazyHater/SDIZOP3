@@ -56,7 +56,7 @@ void PerformanceTests::makeBackpackTests()
 		return lhs.bp_w < rhs.bp_w;
 	});
 
-	std::ofstream file("C:\\Users\\Wakabajaszi\\Desktop\\bp_tests.csv", std::ios::app);
+	std::ofstream file("C:\\Users\\danie\\Desktop\\bp_tests.csv", std::ios::app);
 	if (file.is_open()) {
 		file << "it_n;bp_w;backpackFullCheck;backpackGreedy\n";
 		for (auto res : results) {
@@ -94,7 +94,7 @@ void PerformanceTests::makeTspTests()
 		results.push_back(result);
 	}
 
-	std::ofstream file("C:\\Users\\Wakabajaszi\\Desktop\\tsp_tests.csv", std::ios::app);
+	std::ofstream file("C:\\Users\\danie\\Desktop\\tsp_tests.csv", std::ios::app);
 	if (file.is_open()) {
 		file << "n;fullCheckAlgorithm;greedyAlgorithm\n";
 		for (auto res : results) {

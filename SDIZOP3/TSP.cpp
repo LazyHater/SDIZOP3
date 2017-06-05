@@ -1,11 +1,8 @@
 ﻿#include "TSP.h"
 #include "Graph.h"
-
 #include <algorithm>
 #include <iostream>
 #include <limits.h>
-#include <queue>
-#include <utility>
 
 TSP::TSP()
 {
@@ -26,15 +23,7 @@ std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 
 	for (int i = 0; i < graph.getV() - 1; i++) {
 		auto neightbours = graph.neighbors(current);
-		
-		/*
-		std::priority_queue<Edge> edges;
 
-		for (int vertex : neightbours) {
-			graph.getEdgeValue(current, vertex);
-		}
-		*/
-		
 		int min = INT_MAX / 2;
 		int min_v = -1;
 
@@ -46,12 +35,12 @@ std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 					min = graph.getEdgeValue(current, vertex);
 					min_v = vertex;
 				}
-		
+
 		if (min_v < 0) {
 			std::cerr << "Could not complete graph!\n";
 			return visited;
 		}
-		
+
 		visited.push_back(min_v);
 		current = min_v;
 	}
@@ -59,75 +48,39 @@ std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 	return visited;
 }
 
-bool TSP::nextPermutation(int * begin, int * end)
-{
-	//find longest non-increasing suffix 
-	int* pivot = end;
-	while ((pivot > begin)&&(*(pivot) <= *(pivot - 1))) 
-		pivot--;
-	
-
-	//that is the last sequence
-	if (pivot <= begin)
-		return false;
-
-	//identify pivot
-	pivot--;
-
-	int* succesor = end;
-	while (*succesor <= *pivot) {
-		succesor--;
-	}
-
-	//swap pivot and succesor
-	int tmp = *pivot;
-	*pivot = *succesor;
-	*succesor = tmp;
-
-	//reverse suffix
-	pivot++;
-	while (pivot < end) {
-		int tmp = *pivot;
-		*pivot = *end;
-		*end = tmp;
-		pivot++;
-		end--;
-	}
-
-	return true;
-}
-
 std::vector<int> TSP::fullCheckAlgorithm(const Graph& graph)
 {
 	int currentWeight = 0;
 	int minWeight = 99999;
-	std::vector<int> result;
-	int* permutation = new int[graph.getV()];
-	int* best = new int[graph.getV()];
+	std::vector<int> result, permutation(graph.getV());
 
-	for (int i = 0; i < graph.getV(); i++) {
+	for (int i = 0; i < permutation.size(); i++) {
 		permutation[i] = i;
-		best[i] = -1;
 	}
 
+	std::sort(&permutation[0], &permutation[permutation.size() - 1]);
+
 	do {
+		bool skip = false;
 		currentWeight = 0;
-		for (int i = 0; i < graph.getV() - 1; i++) {
-			currentWeight += graph.getEdgeValue(permutation[i], permutation[i + 1]);
+
+		for (int i = 0; i < permutation.size() - 1; i++) {
+			if (graph.adjacent(permutation[i], permutation[i + 1])) {
+				currentWeight += graph.getEdgeValue(permutation[i], permutation[i + 1]);
+			}
+			else {
+				skip = true;
+				break;
+			}
 		}
-		currentWeight += graph.getEdgeValue(permutation[graph.getV() - 1], permutation[0]);
+
+		if (skip) continue;
 
 		if (currentWeight < minWeight) {
 			minWeight = currentWeight;
-			memcpy(best, permutation, graph.getV() * sizeof(int));
+			result = permutation;
 		}
-	} while (nextPermutation(permutation, permutation + graph.getV() - 1));
+	} while (std::next_permutation(&permutation[0], &permutation[permutation.size() - 1]));
 
-	for (int i = 0; i < graph.getV(); i++) {
-		result.push_back(best[i]);
-	}
-
-	delete permutation;
-	delete best;
 	return result;
 }

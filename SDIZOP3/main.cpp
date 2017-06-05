@@ -280,6 +280,9 @@ void mainMenu() {
 			tspMenu();
 			break;
 		case 3: // Run tests
+			PerformanceTests::makeBackpackTests();
+			PerformanceTests::makeTspTests();
+			system("pause");
 			break;
 		case 4: // EXIT
 			end = true;
