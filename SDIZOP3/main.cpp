@@ -112,8 +112,7 @@ void dkpMenu() {
 			if (isLoaded) {
 				StartCounter();
 				bp = DKP::fullCheckAlgorithm(items, maxWeight);
-				double time = GetCounter();
-				std::cout << "Czas: " << time << "\n" << bp.toString() << "\n";
+				std::cout << "Czas: " << GetCounter() << std::endl;
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
@@ -125,8 +124,7 @@ void dkpMenu() {
 			if (isLoaded) {
 				StartCounter();
 				bp = DKP::greedyAlgorithm(items, maxWeight);
-				double time = GetCounter();
-				std::cout << "Czas: " << time << "\n" << bp.toString() << "\n";
+				std::cout << "Czas: " << GetCounter() << std::endl;
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
@@ -158,7 +156,6 @@ void dkpMenu() {
 
 void tspMenu() {
 	int option = 0, vertexes = 0;
-	double density;
 	bool end = false, isLoaded = false;
 	AdjacencyMatrix matrixGraph;
 
@@ -205,8 +202,7 @@ void tspMenu() {
 			if (isLoaded) {
 				StartCounter();
 				auto result = TSP::fullCheckAlgorithm(matrixGraph);
-				double time = GetCounter();
-				std::cout << "Czas: " << time << "\n";
+				std::cout << "Czas: " << GetCounter() << std::endl;
 
 				for (auto val : result) {
 					std::cout << val << " ";
@@ -223,8 +219,7 @@ void tspMenu() {
 			if (isLoaded) {
 				StartCounter();
 				auto result = TSP::greedyAlgorithm(matrixGraph, 0);
-				double time = GetCounter();
-				std::cout << "Czas: " << time << "\n";
+				std::cout << "Czas: " << GetCounter() << std::endl;
 
 				for (auto val : result) {
 					std::cout << val << " ";
