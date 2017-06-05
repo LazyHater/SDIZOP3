@@ -18,6 +18,7 @@ std::vector<Item> DKP::generateRandomsItems(int n, int p_from, int p_to, int w_f
 	return items;
 }
 
+//assume that max item_n < 63 
 Backpack DKP::fullCheckAlgorithm(std::vector<Item>& items, int backpack_w)
 {
 	size_t items_n = items.size();
@@ -27,12 +28,17 @@ Backpack DKP::fullCheckAlgorithm(std::vector<Item>& items, int backpack_w)
 	for (unsigned long long set = 0; set < (1 << items_n); set++) {
 		Backpack bp(backpack_w);
 
+		bool skip = false;
 		for (int i = 0; i < items_n; i++) {
 			if (set & (1 << i)) {
-				if (bp.addItem(&items[i]) != 0) //if cannot add another item, break
+				if (bp.addItem(&items[i]) != 0) { //if cannot add another item, break
+					skip = true;
 					break;
+				}
 			}
 		}
+
+		if (skip) continue;
 
 		if (bp.getTotalPrice() > best_bp.getTotalPrice())
 			best_bp = bp;
@@ -68,6 +74,7 @@ int DKP::loadFromFile(const std::string fname, std::vector<Item>& items, int& bp
 		file.close();
 		return 0;
 	}
+
 	else {
 		std::cerr << "Cannot open file.\n";
 		system("pause");

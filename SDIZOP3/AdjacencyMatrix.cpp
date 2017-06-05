@@ -6,7 +6,6 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
-#include <deque>
 
 AdjacencyMatrix::AdjacencyMatrix(const AdjacencyMatrix & obj)
 {

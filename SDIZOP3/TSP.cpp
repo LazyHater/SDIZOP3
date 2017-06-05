@@ -4,7 +4,8 @@
 #include <algorithm>
 #include <iostream>
 #include <limits.h>
-
+#include <queue>
+#include <utility>
 
 TSP::TSP()
 {
@@ -25,6 +26,15 @@ std::vector<int> TSP::greedyAlgorithm(const Graph & graph, int start_v)
 
 	for (int i = 0; i < graph.getV() - 1; i++) {
 		auto neightbours = graph.neighbors(current);
+		
+		/*
+		std::priority_queue<Edge> edges;
+
+		for (int vertex : neightbours) {
+			graph.getEdgeValue(current, vertex);
+		}
+		*/
+		
 		int min = INT_MAX / 2;
 		int min_v = -1;
 

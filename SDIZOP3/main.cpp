@@ -49,8 +49,7 @@ void dkpMenu() {
 	int option = 0, maxWeight = 0, amount = 0;
 	bool end = false, isLoaded = false;
 	std::vector<Item> items;
-	std::string filename;
-	Backpack *bp = NULL;
+	Backpack bp(0);
 
 	while (!end) {
 		system("cls");
@@ -65,14 +64,16 @@ void dkpMenu() {
 			<< "7. Algorytm oparty na programowaniu dynamicznym" << std::endl
 			<< "8. Powrot" << std::endl
 			<< "Twoj wybor: ";
+
 		while (option < 1 || option > 8) {
 			std::cin >> option;
 		}
 		std::cout << std::endl;
 
 		switch (option) {
-		case 1: // Load items from file
+		case 1: { // Load items from file
 			std::cout << "Podaj nazwe pliku: ";
+			std::string filename;
 			std::cin >> filename;
 			if (!DKP::loadFromFile(filename, items, maxWeight)) {
 				isLoaded = true;
@@ -80,7 +81,9 @@ void dkpMenu() {
 			else {
 				isLoaded = false;
 			}
+		}
 			break;
+
 		case 2: { // Generate items
 			std::cout << "Podaj ilosc przedmiotow: ";
 			std::cin >> amount;
@@ -90,6 +93,7 @@ void dkpMenu() {
 			isLoaded = true;
 		}
 				break;
+
 		case 3: // Show items
 			std::cout << "Maksymalna waga: " << maxWeight << "\n";
 			for (auto val : items) {
@@ -98,45 +102,53 @@ void dkpMenu() {
 			std::cout << std::endl;
 			system("pause");
 			break;
+
 		case 4:
-			std::cout << bp->toString() << std::endl;
+			std::cout << bp.toString() << std::endl;
 			system("pause");
 			break;
+
 		case 5: // Full check algorithm
 			if (isLoaded) {
 				StartCounter();
-				bp = &DKP::fullCheckAlgorithm(items, maxWeight);
+				bp = DKP::fullCheckAlgorithm(items, maxWeight);
 				double time = GetCounter();
-				std::cout << "Czas: " << time << "\n";
-			}
-			else {
-				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
-			}
-			system("pause");
-		case 6: // Greedy algorithms
-			if (isLoaded) {
-				StartCounter();
-				bp = &DKP::greedyAlgorithm(items, maxWeight);
-				double time = GetCounter();
-				std::cout << "Czas: " << time << "\n";
+				std::cout << "Czas: " << time << "\n" << bp.toString() << "\n";
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
 			}
 			system("pause");
 			break;
+
+		case 6: // Greedy algorithms
+			if (isLoaded) {
+				StartCounter();
+				bp = DKP::greedyAlgorithm(items, maxWeight);
+				double time = GetCounter();
+				std::cout << "Czas: " << time << "\n" << bp.toString() << "\n";
+			}
+			else {
+				std::cerr << "Najpierw wygeneruj lub zaladuj przedmioty z pliku!\n";
+			}
+			system("pause");
+			break;
+
 		case 7: // Dynamic programming algorithm
 			if (isLoaded) {
 				//TODO
+				std::cerr << "UNIMPLEMENTED!\n";
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj graf z pliku!\n";
 			}
 			system("pause");
 			break;
+
 		case 8: // Exit
 			end = true;
 			break;
+
 		default:
 			break;
 		}
@@ -148,8 +160,6 @@ void tspMenu() {
 	int option = 0, vertexes = 0;
 	double density;
 	bool end = false, isLoaded = false;
-	std::string filename;
-
 	AdjacencyMatrix matrixGraph;
 
 	while (!end) {
@@ -164,17 +174,21 @@ void tspMenu() {
 			<< "6. Algorytm przeszukiwania lokalnego" << std::endl
 			<< "7. Powrot" << std::endl
 			<< "Twoj wybor: ";
+
 		while (option < 1 || option > 7) {
 			std::cin >> option;
 		}
 		std::cout << std::endl;
 
 		switch (option) {
-		case 1: // Load graph from file, UNDIRECTED
+		case 1: { // Load graph from file
 			std::cout << "Podaj nazwe pliku: ";
+			std::string filename;
 			std::cin >> filename;
 			if (matrixGraph.loadRawFromFile(filename)) isLoaded = true;
-			break;
+		}
+		break;
+
 		case 2: { // Generate graph
 			std::cout << "Podaj ilosc miast: ";
 			std::cin >> vertexes;
@@ -186,13 +200,14 @@ void tspMenu() {
 			std::cout << matrixGraph.toString() << std::endl;
 			system("pause");
 			break;
+
 		case 4: // Full check algorithm
 			if (isLoaded) {
 				StartCounter();
 				auto result = TSP::fullCheckAlgorithm(matrixGraph);
 				double time = GetCounter();
 				std::cout << "Czas: " << time << "\n";
-				
+
 				for (auto val : result) {
 					std::cout << val << " ";
 				}
@@ -203,13 +218,14 @@ void tspMenu() {
 			}
 			system("pause");
 			break;
+
 		case 5: // Greedy algorithm
 			if (isLoaded) {
 				StartCounter();
 				auto result = TSP::greedyAlgorithm(matrixGraph, 0);
 				double time = GetCounter();
 				std::cout << "Czas: " << time << "\n";
-				
+
 				for (auto val : result) {
 					std::cout << val << " ";
 				}
@@ -220,15 +236,18 @@ void tspMenu() {
 			}
 			system("pause");
 			break;
+
 		case 6: // Local check algorithm
 			if (isLoaded) {
 				//TODO
+				std::cerr << "UNIMPLEMENTED!\n";
 			}
 			else {
 				std::cerr << "Najpierw wygeneruj lub zaladuj graf z pliku!\n";
 			}
 			system("pause");
 			break;
+
 		case 7: // Exit
 			end = true;
 			break;
@@ -236,7 +255,6 @@ void tspMenu() {
 			break;
 		}
 	}
-	return;
 }
 
 void mainMenu() {
